@@ -31,12 +31,13 @@
 ```
 ```mermaid
 graph TD
-    A[MuJoCo仿真获取接触姿势] --> B{模型预处理}
-    B -->|表面网格提取| C[生成STL文件]
-    C -->|根据STL生成体网格| D[生成Mesh文件]
-    D --> E[FEM接触分析]
-    E --> F[生成VTK可视化数据]
-    F --> G[反馈力学参数至MuJoCo]
+    A[MuJoCo Simulation] --> B{Contact Detection}
+    B -->|Yes| C[Export STL Geometry]
+    C --> D[Generate Volume Mesh]
+    D --> E[FEM Contact Analysis]
+    E --> F[Calculate Contact Forces]
+    F --> G[Apply Forces in MuJoCo]
+    B -->|No| H[Continue Simulation]
 ```
 # 快速开始 
 环境配置
